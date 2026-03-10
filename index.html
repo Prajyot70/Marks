@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MARK | GATE Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <img src="mark-logo-transparent.png" alt="MARK Logo" class="logo-img">
+    </header>
+
+    <main>
+        <div class="hero-section">
+            <h1>GATE Response Analysis</h1>
+            <p>Paste your official GOAPS response sheet URL below to calculate your exact marks.</p>
+
+            <form class="input-form" id="analysisForm">
+                <div class="input-wrapper" style="flex-direction: row; align-items: center; padding: 0.5rem;">
+                    <svg class="input-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 0.5rem;">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                    </svg>
+                    <input type="url" id="urlInput" placeholder="https://cdn.digialm.com/..." required style="flex: 1; border: none; outline: none; background: transparent; color: var(--pitch-black); font-size: 1rem;">
+                </div>
+                <button type="submit" id="analyzeBtn" style="margin-top: 1rem;">
+                    <span class="spinner" id="btnSpinner"></span>
+                    <span id="btnText">Calculate Marks</span>
+                </button>
+            </form>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+
+        <div class="results-dashboard" id="resultsDashboard">
+            <div class="chart-container">
+                <div class="chart-center-label">
+                    <div class="accuracy-percent" id="centerAccuracyText">--</div>
+                    <div class="accuracy-text">ACCURACY</div>
+                </div>
+                <canvas id="accuracyChart"></canvas>
+            </div>
+
+            <div class="custom-legend">
+                <div class="legend-item"><span class="dot-indigo"></span> Correct</div>
+                <div class="legend-item"><span class="dot-gray"></span> Incorrect</div>
+            </div>
+
+            <div class="score-display">
+                <h2>Total Score: <span id="finalScoreDisplay">--</span> / 100</h2>
+                <p style="color: var(--slate-gray); margin-top: 0.5rem; margin-bottom: 0;">Calculated strictly from the official GATE EE 2026 key.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>This tool securely calculates your exact marks based on the official answer key.</p>
+        <p>&copy; 2026 MARK. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
