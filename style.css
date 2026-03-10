@@ -1,0 +1,316 @@
+
+/* --- Color Tokens (Light Theme: White, Indigo, Black) --- */
+:root {
+    --pure-white: #FFFFFF;
+    --off-white: #F8FAFC; 
+    --indigo: #4F46E5; 
+    --pitch-black: #0F172A; 
+    --slate-gray: #64748B; 
+    --border-color: #E2E8F0;
+}
+
+/* --- Global Reset & Responsiveness --- */
+*, *::before, *::after { 
+    box-sizing: border-box; 
+}
+
+body {
+    margin: 0; 
+    padding: 0;
+    background-color: var(--pure-white);
+    color: var(--pitch-black);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex; 
+    flex-direction: column;
+    min-height: 100vh; 
+    overflow-x: hidden;
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Header --- */
+header {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--indigo);
+    padding: 1.25rem;
+    display: flex; 
+    justify-content: center;
+    position: sticky; 
+    top: 0; 
+    z-index: 100;
+}
+
+.logo-img { 
+    height: 35px; 
+    width: auto; 
+    /* Flips your white logo to black to match the light theme */
+    filter: invert(1); 
+}
+
+/* --- Main Content --- */
+main {
+    flex: 1; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    padding: 4rem 1.5rem;
+    text-align: center; 
+    width: 100%;
+}
+
+.hero-section {
+    animation: fadeInUp 0.8s ease-out forwards; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    width: 100%; 
+    max-width: 700px;
+}
+
+h1 { 
+    font-size: 2.5rem; 
+    margin-bottom: 0.5rem; 
+    color: var(--pitch-black); 
+}
+
+p { 
+    color: var(--slate-gray); 
+    margin-bottom: 2.5rem; 
+    font-size: 1rem; 
+}
+
+/* --- Textarea Input Area --- */
+.input-form {
+    display: flex; 
+    flex-direction: column;
+    width: 100%; 
+    gap: 1rem; 
+}
+
+.input-wrapper {
+    display: flex; 
+    flex-direction: column;
+    background-color: var(--off-white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px; 
+    padding: 1rem;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--indigo);
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.15);
+    background-color: var(--pure-white);
+}
+
+.input-header {
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem;
+    margin-bottom: 0.75rem; 
+    color: var(--slate-gray);
+    font-weight: 600; 
+    font-size: 0.875rem;
+}
+
+.input-icon {
+    stroke: var(--indigo); 
+    fill: none;
+    stroke-width: 2; 
+    width: 20px; 
+    height: 20px;
+}
+
+textarea {
+    width: 100%; 
+    min-height: 150px;
+    background: transparent; 
+    border: none;
+    color: var(--slate-gray); 
+    font-family: monospace;
+    font-size: 0.875rem; 
+    outline: none; 
+    resize: vertical;
+}
+
+textarea::placeholder { 
+    color: #CBD5E1; 
+}
+
+/* --- Button --- */
+button {
+    background-color: var(--indigo); 
+    color: var(--pure-white);
+    border: none; 
+    border-radius: 8px; 
+    padding: 1rem 1.5rem;
+    font-size: 1rem; 
+    font-weight: 600; 
+    cursor: pointer;
+    transition: all 0.2s ease; 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    gap: 0.5rem; 
+    width: 100%;
+}
+
+button:hover { 
+    background-color: #3730A3; 
+    transform: scale(1.01); 
+}
+
+button:active { 
+    transform: scale(0.99); 
+}
+
+button:disabled { 
+    opacity: 0.7; 
+    cursor: not-allowed; 
+    transform: none; 
+}
+
+.spinner {
+    display: none; 
+    width: 16px; 
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid var(--pure-white);
+    border-radius: 50%; 
+    animation: spin 1s linear infinite;
+}
+
+.error-message { 
+    color: #DC2626; 
+    margin-top: 1rem; 
+    font-size: 0.875rem; 
+    display: none; 
+}
+
+/* --- Results Dashboard --- */
+.results-dashboard {
+    display: none; 
+    width: 100%; 
+    max-width: 700px;
+    margin-top: 3rem; 
+    padding: 2.5rem;
+    background-color: var(--off-white); 
+    border: 1px solid var(--border-color);
+    border-radius: 12px; 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+}
+
+.results-dashboard.show {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 1.5rem;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* --- Chart Layout --- */
+.chart-container {
+    width: 100%; 
+    max-width: 220px; 
+    aspect-ratio: 1 / 1; 
+    position: relative; 
+    margin-bottom: 0.5rem;
+}
+
+.chart-center-label {
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    text-align: center; 
+    z-index: 10;
+}
+
+.accuracy-percent { 
+    font-size: 2.2rem; 
+    font-weight: 700; 
+    color: var(--pitch-black); 
+    line-height: 1; 
+}
+
+.accuracy-text { 
+    font-size: 0.75rem; 
+    color: var(--slate-gray); 
+    margin-top: 0.25rem; 
+    font-weight: 600; 
+    letter-spacing: 1px; 
+}
+
+.custom-legend { 
+    display: flex; 
+    gap: 1.5rem; 
+    justify-content: center; 
+    font-size: 0.875rem; 
+    color: var(--slate-gray); 
+    font-weight: 500; 
+}
+
+.legend-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+}
+
+.dot-indigo { 
+    width: 10px; 
+    height: 10px; 
+    background-color: var(--indigo); 
+    border-radius: 50%; 
+}
+
+.dot-gray { 
+    width: 10px; 
+    height: 10px; 
+    background-color: var(--border-color); 
+    border-radius: 50%; 
+}
+
+/* --- Score Display --- */
+.score-display { 
+    margin-top: 1rem; 
+    padding-top: 1.5rem; 
+    border-top: 1px solid var(--border-color); 
+    width: 100%; 
+}
+
+.score-display h2 { 
+    color: var(--pitch-black); 
+    margin: 0; 
+    font-size: 1.75rem; 
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center; 
+    padding: 2rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--slate-gray); 
+    font-size: 0.875rem;
+    margin-top: auto; 
+    background-color: var(--off-white);
+}
+
+/* --- Mobile Media Queries --- */
+@media (max-width: 550px) {
+    h1 { font-size: 1.75rem; }
+    .chart-container { max-width: 180px; }
+    .accuracy-percent { font-size: 1.75rem; }
+    .results-dashboard { padding: 1.5rem; }
+}
